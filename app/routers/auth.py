@@ -14,9 +14,6 @@ from app.db.models import UserRole  # Import your UserRole Enum
 auth_router = r = APIRouter()
 
 
-
-r = APIRouter()
-
 def authenticate_user(db: Session, email: str, password: str):
     user = database.get_user_by_email(db, email)
     if not user or not security.verify_password(password, user.hashed_password):

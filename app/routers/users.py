@@ -12,9 +12,9 @@ from app.db.crud import (
 from app.db.schemas import User, UserOut, UserCreate
 from app.authe import get_current_active_admin
 
-users_router = r = APIRouter()
+users_router = ra = APIRouter()
 
-@r.get(
+@ra.get(
     "/users",
     response_model=t.List[UserOut],
     response_model_exclude_none=True,
@@ -32,14 +32,14 @@ async def users_list(
     response.headers["Content-Range"] = f"0-9/{len(users)}"
     return users
 
-@r.get("/users/me", response_model=UserOut, response_model_exclude_none=True)
+@ra.get("/users/me", response_model=UserOut, response_model_exclude_none=True)
 async def user_me(current_user=Depends(get_current_active_admin)):
     """
     Get own user
     """
     return current_user
 
-@r.post("/users", response_model=User, response_model_exclude_none=True)
+@ra.post("/users", response_model=User, response_model_exclude_none=True)
 async def user_create(
     request: Request,
     user: UserCreate,
@@ -52,7 +52,7 @@ async def user_create(
     return create_user(db, user)
 
 
-@r.get(
+@ra.get(
     "/users/{user_id}",
     response_model=UserOut,
     response_model_exclude_none=True,
