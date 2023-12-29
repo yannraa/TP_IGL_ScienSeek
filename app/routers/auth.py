@@ -1,6 +1,6 @@
 
 from fastapi.security import OAuth2PasswordRequestForm
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, Form, HTTPException, status
 from datetime import timedelta
 
 from pytest import Session
@@ -46,13 +46,15 @@ async def login(
 
     return {"access_token": access_token, "token_type": "bearer"}
 
-
 @r.post("/signup")
-async def signup( 
+async def signup(
     db: Session = Depends(database.get_db),
-    form_data: OAuth2PasswordRequestForm = Depends()
+    first_name: str = Form(...),
+    last_name: str = Form(...),
+    email: str = Form(...),
+    form_data: OAuth2PasswordRequestForm = Depends(),
 ):
-    user = sign_up_new_user(db, form_data.username, form_data.password)
+    user = sign_up_new_user(db, first_name, last_name, email,form_data.username, form_data.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
@@ -60,15 +62,4 @@ async def signup(
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    access_token_expires = timedelta(
-        minutes=security.ACCESS_TOKEN_EXPIRE_MINUTES
-    )
-
-    # Assign permissions based on user role
-    permissions = [user.role.name]  # Use role name as string
-    access_token = security.create_access_token(
-        data={"sub": user.email, "permissions": permissions},
-        expires_delta=access_token_expires,
-    )
-
-    return {"access_token": access_token, "token_type": "bearer"}
+    access_token_expires = timedelta(minutes=security.ACCESS_TOKEN_EXPIRE_MINUTES)

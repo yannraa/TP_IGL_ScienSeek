@@ -5,7 +5,11 @@ import typing as t
 
 class UserBase(BaseModel):
     email: str
+    first_name:str
+    last_name:str
     role:int
+    username:str
+
 
 
 class UserOut(UserBase):
@@ -15,6 +19,11 @@ class UserOut(UserBase):
         orm_mode = True
 class UserCreate(UserBase):
     password: str
+    username:str
+    is_active: bool
+    first_name:str
+    last_name:str
+    role:int
 
 
     class Config:
@@ -38,4 +47,4 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: str = None
-    permissions: str = "user"
+    permissions: int = "userrole"

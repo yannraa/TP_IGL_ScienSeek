@@ -30,8 +30,8 @@ async def get_current_user(
         email: str = payload.get("sub")
         if email is None:
             raise credentials_exception
-        roles: list = payload.get("roles", [])
-        token_data = schemas.TokenData(email=email, roles=roles)
+        permissions: list = payload.get("permissions")
+        token_data = schemas.TokenData(email=email, permissions=permissions)
     except JWTError:
         raise credentials_exception
     user = get_user_by_email(db, token_data.email)
@@ -49,7 +49,7 @@ async def get_current_active_user(
 async def get_current_active_admin(
     current_user: models.User = Depends(get_current_user),
 ) -> models.User:
-    if "administrateur" not in [role.name for role in current_user.roles]:
+    if current_user.role != 1:
         raise HTTPException(
             status_code=403, detail="The user doesn't have enough privileges"
         )
@@ -58,7 +58,7 @@ async def get_current_active_admin(
 async def get_current_active_moderator(
     current_user: models.User = Depends(get_current_user),
 ) -> models.User:
-    if "moderateur" not in [role.name for role in current_user.roles]:
+    if current_user.role != 3 :
         raise HTTPException(
             status_code=403, detail="The user doesn't have enough privileges"
         )
@@ -73,7 +73,7 @@ def authenticate_user(db: Session, email: str, password: str):
     return user
 
 # Restrict signup to regular users
-def sign_up_new_user(db: Session, email: str, password: str):
+def sign_up_new_user(db: Session, email: str,first_name:str,last_name:str,username:str,password: str):
     user = get_user_by_email(db, email)
     if user:
         return False  # User already exists
@@ -81,9 +81,13 @@ def sign_up_new_user(db: Session, email: str, password: str):
         db,
         schemas.UserCreate(
             email=email,
+            first_name=first_name,
+            last_name=last_name,
+            username=username,
             password=password,
+         
             is_active=True,
-            role=["utilisateur"],
+            role=2,
         ),
     )
     return new_user
