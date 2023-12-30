@@ -31,8 +31,7 @@ async def login(
         minutes=security.ACCESS_TOKEN_EXPIRE_MINUTES
     )
     
-    # Assign permissions based on user role
-    permissions = [user.role.name]  # Use role name as string
+    permissions = [user.role]
     access_token = security.create_access_token(
         data={"sub": user.email, "permissions": permissions},
         expires_delta=access_token_expires,
@@ -43,12 +42,12 @@ async def login(
 @r.post("/signup")
 async def signup(
     db: Session = Depends(database.get_db),
+    email: str = Form(...),
     first_name: str = Form(...),
     last_name: str = Form(...),
-    email: str = Form(...),
     form_data: OAuth2PasswordRequestForm = Depends(),
 ):
-    user = sign_up_new_user(db, first_name, last_name, email,form_data.username, form_data.password)
+    user = sign_up_new_user(db,email,first_name, last_name,form_data.username, form_data.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,

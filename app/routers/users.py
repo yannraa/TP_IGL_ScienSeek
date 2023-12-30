@@ -67,3 +67,17 @@ async def read_user(
     """
     user = get_user(db, user_id)
     return user
+@ra.get(
+    "/users/{user_id}",
+    response_model=UserOut,
+    response_model_exclude_none=True,
+)
+async def read_user(
+    user_id: int,
+    db=Depends(get_db),
+    currnt_user=Depends(get_current_active_admin),
+):
+
+    user = get_user(db, user_id)
+    return user
+

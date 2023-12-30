@@ -16,7 +16,7 @@ class UserOut(UserBase):
     pass
 
     class Config:
-        orm_mode = True
+      from_attributes = True
 class UserCreate(UserBase):
     password: str
     username:str
@@ -27,18 +27,18 @@ class UserCreate(UserBase):
 
 
     class Config:
-        orm_mode = True
+       from_attributes = True
 class User(UserBase):
     id: int
     is_active: bool
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserEdit(UserBase):
     password: t.Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class Token(BaseModel):
