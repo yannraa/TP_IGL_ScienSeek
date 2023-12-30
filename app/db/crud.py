@@ -31,6 +31,7 @@ def create_user(db: Session, user: schemas.UserCreate):
         first_name=user.first_name,
         last_name=user.last_name,
         hashed_password=hashed_password,
+        username=user.username,
         is_active=user.is_active,
         role=user.role,  
      

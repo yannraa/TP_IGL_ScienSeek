@@ -13,19 +13,13 @@ from app.db.models import UserRole  # Import your UserRole Enum
 
 auth_router = r = APIRouter()
 
-
-def authenticate_user(db: Session, email: str, password: str):
-    user = database.get_user_by_email(db, email)
-    if not user or not security.verify_password(password, user.hashed_password):
-        return None
-    return user
-
 @r.post("/token")
 async def login(
     db: Session = Depends(database.get_db),
-    form_data: OAuth2PasswordRequestForm = Depends()
+    email: str = Form(...),
+    form_data: OAuth2PasswordRequestForm = Depends(),
 ):
-    user = authenticate_user(db, form_data.username, form_data.password)
+    user = authenticate_user(db, email, form_data.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
