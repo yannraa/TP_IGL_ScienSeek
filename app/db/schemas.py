@@ -21,8 +21,8 @@ class UserCreate(UserBase):
     password: str
     username:str
     is_active: bool
-    first_name:str
-    last_name:str
+    first_name:t.Optional[str] =None 
+    last_name: t.Optional[str] = None
     role:int
 
 
