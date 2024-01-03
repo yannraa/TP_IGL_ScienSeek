@@ -5,8 +5,8 @@ import typing as t
 
 class UserBase(BaseModel):
     email: str
-    first_name:str
-    last_name:str
+    first_name:t.Optional[str] =None 
+    last_name: t.Optional[str] = None
     role:int
     username:str
 
@@ -47,4 +47,4 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: str = None
-    permissions: int = "userrole"
+    permissions: list 

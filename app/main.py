@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.db import crud
+from app.db.database import SessionLocal
 
-from app.routers import auth,users
+from app.routers import auth,users,administrateur
 
 
 # models.Base.metadata.create_all(bind=engine)
@@ -20,6 +22,7 @@ app.add_middleware(
 app.include_router(users.users_router)
 
 app.include_router(auth.auth_router)
+app.include_router(administrateur.admin_router)
 
 
 

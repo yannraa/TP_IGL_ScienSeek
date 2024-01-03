@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends, Response ,Request
+from fastapi import APIRouter, Depends, HTTPException, Response ,Request
 import typing as t
 from sqlalchemy.orm import Session
+from app.db import database
 from app.db.database import get_db
 from app.db.crud import (
     get_users,
@@ -10,12 +11,11 @@ from app.db.crud import (
     edit_user,
 )
 from app.db.schemas import User, UserOut, UserCreate
-from app.authe import get_current_active_admin
+from app.authe import get_current_active_admin,authenticate_user
 
 users_router = ra = APIRouter()
 
-@ra.get(
-    "/users",
+@ra.get( "/users",
     response_model=t.List[UserOut],
     response_model_exclude_none=True,
 )
@@ -39,12 +39,10 @@ async def user_me(current_user=Depends(get_current_active_admin)):
     """
     return current_user
 
-@ra.post("/users", response_model=User, response_model_exclude_none=True)
+@ra.post("/users")
 async def user_create(
-    request: Request,
     user: UserCreate,
-    db=Depends(get_db),
-    current_user=Depends(get_current_active_admin),
+    db: Session = Depends(database.get_db)
 ):
     """
     Create a new user
