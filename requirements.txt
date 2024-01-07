@@ -17,3 +17,6 @@ bcrypt
 sqlalchemy-utils
 python-multipart
 pyjwt
+
+
+elasticsearch
