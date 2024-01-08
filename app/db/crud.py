@@ -8,7 +8,7 @@ from app.db.models import UserRole  # Import your UserRole Enum
 
 from app.elastic.elastic_utils import es, INDEX_NAME
 from app.elastic.elastic_config import INDEX_NAME
-from app.db.models import Article
+from app.db.modelsarticle import Article
 from fastapi import UploadFile
 import shutil
 import os

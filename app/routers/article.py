@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.db import crud, models
+from app.db import crud, models ,modelsarticle 
 from app.elastic.elastic_utils import es
 from app.db.database import get_db
 import typing as t

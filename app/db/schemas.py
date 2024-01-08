@@ -1,45 +1,36 @@
-
 from pydantic import BaseModel
-import typing as t
-
+from typing import List, Optional
 
 class UserBase(BaseModel):
     email: str
-    first_name:t.Optional[str] =None 
-    last_name: t.Optional[str] = None
-    role:int
-    username:str
-
-
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    role: int
+    username: str
 
 class UserOut(UserBase):
-    pass
-
     class Config:
-      from_attributes = True
+        orm_mode = True
+
 class UserCreate(UserBase):
     password: str
-    username:str
     is_active: bool
-    first_name:t.Optional[str] =None 
-    last_name: t.Optional[str] = None
-    role:int
-
 
     class Config:
-       from_attributes = True
+        orm_mode = True
+
 class User(UserBase):
     id: int
     is_active: bool
+
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 class UserEdit(UserBase):
-    password: t.Optional[str] = None
+    password: Optional[str] = None
 
     class Config:
-        from_attributes = True
-
+        orm_mode = True
 
 class Token(BaseModel):
     access_token: str
@@ -47,8 +38,7 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: str = None
-    permissions: list
-
+    permissions: List[str]
 
 class AuthorBase(BaseModel):
     name: str
@@ -90,15 +80,15 @@ class ArticleBase(BaseModel):
     title: str
     abstract: str
     text: str
-    pdf_url: str
+    pdf_url: Optional[str]
 
 class ArticleCreate(ArticleBase):
     pass
 
 class Article(ArticleBase):
     id: int
-    authors: t.List[Author] = []
-    keywords: t.List[Keyword] = []
+    authors: List[Author] = []
+    keywords: List[Keyword] = []
 
     class Config:
         orm_mode = True
