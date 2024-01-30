@@ -3,7 +3,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from app.elastic.elastic_utils import create_index 
 
 SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:rayane16@localhost:5432/TP_IGL'
 
@@ -12,7 +11,6 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
-create_index()
 
 def get_db():
     db = SessionLocal()

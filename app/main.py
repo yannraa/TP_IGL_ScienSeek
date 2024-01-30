@@ -1,12 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.db import crud
-from app.db.database import SessionLocal
-
-from app.routers import auth,users,administrateur
-from app.routers import article
-from app.elastic.elastic_utils import create_index
-# models.Base.metadata.create_all(bind=engine)
+from app.elastic.elastic_config import create_index
+from app.routers import auth, users, administrateur, article, search
 
 app = FastAPI()
 
@@ -19,13 +14,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-create_index()
-app.include_router(users.users_router)
 
+
+app.include_router(users.users_router)
 app.include_router(auth.auth_router)
 app.include_router(administrateur.admin_router)
+app.include_router(article.router, prefix="/article", tags=["article"])
+app.include_router(search.router, prefix="/search", tags=["search"])
 
-app.include_router(article.router)
+create_index()  
 
 @app.get("/")
 def root():
