@@ -15,6 +15,7 @@ def create_index():
         es_index = {
             "mappings": {
                 "properties": {
+
                     "title": {"type": "text"},
                     "abstract": {"type": "text"},
                     "authors": {"type": "nested", "properties": {"name": {"type": "text"}, "affiliation": {"type": "text"}}},

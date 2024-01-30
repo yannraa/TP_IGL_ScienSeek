@@ -5,7 +5,7 @@ from sqlalchemy.sql.sqltypes import TIMESTAMP
 from .database import Base
 from pydantic import BaseModel
 from typing import List
-
+from uuid import UUID, uuid4
 class Author(BaseModel):
     name: str
     affiliation: str

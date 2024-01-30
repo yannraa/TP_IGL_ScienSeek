@@ -24,7 +24,6 @@ async def search_articles(
     authors: str = Query("", description="Liste des auteurs à filtrer"),
     institutions: str = Query("", description="Liste des institutions à filtrer"),
     start_date: str = Query(None, description="Date de début pour filtrer les articles (format: 'yyyy-MM-dd')"),
-    end_date: str = Query(None, description="Date de fin pour filtrer les articles (format: 'yyyy-MM-dd')"),
     keyword: str = Query("", description="Mot clé à filtrer")
 ):
     try:
@@ -41,8 +40,6 @@ async def search_articles(
         if start_date:
             s = s.filter("range", publication_date={"gte": start_date})
 
-        if end_date:
-            s = s.filter("range", publication_date={"lte": end_date})
 
         if keyword:
             s = s.query(Q("multi_match", query=keyword, fields=["title", "abstract", "keywords", "full_text"]))
