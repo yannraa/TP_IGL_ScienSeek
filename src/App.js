@@ -1,22 +1,29 @@
 
+
 import './App.css';
 import CreateAccountPage from './components/CreateAccountPage';
 import LoginPage from './components/LoginPage';
 import PageAdmin from './components/PageAdmin';
-import TabModera from './components/TabModera';
+import PageRechPage from './components/PageRechPage';
 import { Link } from 'react-router-dom';
-import ArticlePage from './components/ArticlePage';
-import { BrowserRouter as Router, Route } from 'react-router-dom'; 
+import CreateModeraPage from './components/CreateModeraPage';
+import { BrowserRouter , Routes , Route } from 'react-router-dom'; 
 function App() {
   return (
-   
-    <Router>
-      <div className="App">
-        <PArticlePage />
-      </div>
-    </Router>
-  
+   <div>  
+   <BrowserRouter>
+        <Routes>
+          <Route index element ={<LoginPage/>}/>
+          <Route path="/PageAdmin" element ={<PageAdmin/>}/>
+          <Route path="/LoginPage" element ={<LoginPage/>}/>
+          <Route path="/CreateAccountPage" element ={<CreateAccountPage/>}/>
+          <Route path="/PageRechPage" element ={<PageRechPage/>}/>
+          <Route path="/CreateModeraPage" element ={<CreateModeraPage/>}/>
+        </Routes>
+    </BrowserRouter>
 
+   </div>
+   
 
   );
 }
