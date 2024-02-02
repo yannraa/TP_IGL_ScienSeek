@@ -28,11 +28,13 @@ const Navvbar = () => {
   const handleRechercheClick = () => {
     setRechercheActive(true);
     setFavorisActive(false);
+    navigate('/PageRechPage');
   };
 
   const handleFavorisClick = () => {
     setFavorisActive(true);
     setRechercheActive(false);
+    navigate('/FavorisPage');
   };
 
   return (
