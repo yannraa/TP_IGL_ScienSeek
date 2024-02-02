@@ -5,6 +5,9 @@ import CreateAccountPage from './components/CreateAccountPage';
 import LoginPage from './components/LoginPage';
 import PageAdmin from './components/PageAdmin';
 import PageRechPage from './components/PageRechPage';
+import ArticlePage from './components/ArticlePage';
+import ResultatRechPage from './components/ResultatRechPage';
+import FavorisPage from './components/FavorisPage';
 import { Link } from 'react-router-dom';
 import CreateModeraPage from './components/CreateModeraPage';
 import { BrowserRouter , Routes , Route } from 'react-router-dom'; 
@@ -19,6 +22,9 @@ function App() {
           <Route path="/CreateAccountPage" element ={<CreateAccountPage/>}/>
           <Route path="/PageRechPage" element ={<PageRechPage/>}/>
           <Route path="/CreateModeraPage" element ={<CreateModeraPage/>}/>
+          <Route path="/ArticlePage" element ={<ArticlePage/>}/>
+          <Route path="/ResultatRechPage" element ={<ResultatRechPage/>}/>
+          <Route path="/FavorisPage" element ={<FavorisPage/>}/>
         </Routes>
     </BrowserRouter>
 
