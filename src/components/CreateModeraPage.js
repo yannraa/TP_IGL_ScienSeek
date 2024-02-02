@@ -3,7 +3,7 @@ import Login from '../Image/Login.PNG'
 import Logo from '../Image/Logo.PNG';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-const CreateAccountPage = () => {
+const CreateModeraPage = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -43,7 +43,6 @@ const CreateAccountPage = () => {
   const handleBirthdateChange = (e) => {
     setBirthdate(e.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -62,7 +61,7 @@ const CreateAccountPage = () => {
   
       if (registrationSuccessful) {
         // Navigate to PageAdmin on successful form submission
-        navigate('/PageRechPage');
+        navigate('/PageAdmin');
       } else {
         // Handle the case where registration failed
         console.error('Registration failed');
@@ -71,7 +70,8 @@ const CreateAccountPage = () => {
       console.error('Error during form submission:', error);
     }
   };
-
+  
+  // Replace this with your actual form submission logic
   const submitRegistrationForm = async () => {
     // Implement your form submission logic here (e.g., API call)
     // Return true if registration is successful, false otherwise
@@ -79,8 +79,7 @@ const CreateAccountPage = () => {
     // and return a boolean based on the response from the server
     return true; // Replace with actual logic
   };
-
-
+  
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -106,8 +105,7 @@ const CreateAccountPage = () => {
             transform: 'translate(-50%, -50%)',
             width: '550px'
           }}/>
-        {/* <div style={{ backgroundColor: '#76B5FF', padding: '40px',
-borderRadius: '50px' }}> */}
+        
         <div
           style={{
             backgroundColor: '#76B5FF',
@@ -120,7 +118,7 @@ borderRadius: '50px' }}> */}
           }}
 
         >
-      {/* <form style={{  flex: '1', padding: '0 20px' }}> */}
+     
         <div className="form-group">
         <label htmlFor="username">Nom d’utilisateur</label>
         <br />
@@ -184,8 +182,7 @@ className="input-field" />
 
           </div>
 </div>
-{/* --------------------------------------------------------------------------------------
-*/}
+
 <div className="form-group">
 <br />
 <label htmlFor="email">E-mail</label>
@@ -207,7 +204,7 @@ whiteSpace: 'nowrap' }} className="login-button">
 
       {/* </form> */}
       </div>
-      <a href="/LoginPage" style={{
+      <a href="/CreateAccountPage" style={{
 
             padding: '40px',
             borderRadius: '10px',
@@ -216,7 +213,7 @@ whiteSpace: 'nowrap' }} className="login-button">
             left: '80%',
             transform: 'translate(-50%, -50%)',
             width: '650px'
-          }}> <p>vous avez déja un compte? se connecter     </p></a>
+          }}> </a>
 
       </div>
 
@@ -234,4 +231,4 @@ whiteSpace: 'nowrap' }} className="login-button">
   );
 };
 
-export default CreateAccountPage;
+export default CreateModeraPage;

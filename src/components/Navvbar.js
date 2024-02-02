@@ -2,15 +2,24 @@ import React, { useState } from 'react';
 
 import Logo from '../Image/Logo.PNG';
 import rech from '../Image/rech.png';
+import { useNavigate } from 'react-router-dom';
 
 const Navvbar = () => {
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
   const [rechercheActive, setRechercheActive] = useState(false);
   const [favorisActive, setFavorisActive] = useState(false);
 
+  const handleSeDeconnecter = () => {
+    // Navigating to LoginPage
+    navigate('/LoginPage');
+  };
+
+
   const handleSearch = () => {
     if (searchValue.trim() !== '') {
-      alert(`cherchan pour ${searchValue}`);
+      // Navigating to Pagerechpage
+      navigate('/PageRechPage');
     } else {
       alert('entrez une recherche valide SVP');
     }
@@ -72,20 +81,22 @@ const Navvbar = () => {
       >
         Favoris
       </button>
-
       <button
-        style={{
-          padding: '8px',
-          backgroundColor: '#ffff',
-          borderRadius: '5px',
-          borderColor: '#0E00AF',
-          width: '155px',
-          boxShadow: '0px 2px 2px rgba(14, 0, 175, 0.7)',
-          marginRight: '20px',
-        }}
-      >
-        Se Deconnecter
-      </button>
+  style={{
+    padding: '8px',
+    backgroundColor: '#ffff',
+    borderRadius: '5px',
+    borderColor: '#0E00AF',
+    width: '155px',
+    boxShadow: '0px 2px 2px rgba(14, 0, 175, 0.7)',
+    marginRight: '20px',
+    cursor: 'pointer',
+  }}
+  onClick={handleSeDeconnecter}
+>
+  Se Deconnecter
+</button>
+
 
     </div>
   );

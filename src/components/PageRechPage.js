@@ -84,7 +84,7 @@ const PageRechPage = () => {
             Rechercher
           </button>
         </div>
-        {/* Other components, content, etc. */}
+       
       </div>
     </div>
   );
