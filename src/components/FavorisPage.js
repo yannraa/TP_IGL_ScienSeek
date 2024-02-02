@@ -2,9 +2,12 @@ import React from 'react';
 import react, { useState } from 'react';
 import Navvbar from './Navvbar';
 import arrowFilters from '../Image/arrowFilters.svg';
-
+import { useNavigate } from 'react-router-dom';
 
 const FavorisPage = () => {
+
+    const navigate = useNavigate();
+    
   const articles = [
     {
       title: 'The Title 1',
@@ -30,11 +33,13 @@ const FavorisPage = () => {
     // Add more articles as needed
   ];
 
+
  
   const handleTitleClick = (title) => {
-    // Handle the click action here, e.g., navigate to a detailed view
+    navigate('/ArticlePage');
     console.log(`Title "${title}" clicked`);
   };
+
 
 
 

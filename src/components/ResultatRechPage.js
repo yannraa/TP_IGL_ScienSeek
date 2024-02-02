@@ -2,6 +2,7 @@ import React from 'react';
 import react, { useState } from 'react';
 import Navvbar from './Navvbar';
 import arrowFilters from '../Image/arrowFilters.svg';
+import { useNavigate } from 'react-router-dom';
 
 
 const ResultatRechPage = () => {
@@ -30,7 +31,7 @@ const ResultatRechPage = () => {
     // Add more articles as needed
   ];
 
-
+  const navigate = useNavigate();
   const [isMotCleDropdownVisible, setMotCleDropdownVisible] = useState(false);
   const [isAuteurDropdownVisible, setAuteurDropdownVisible] = useState(false);
   const [isInstitutionDropdownVisible, setInstitutionDropdownVisible] = useState(false);
@@ -129,7 +130,7 @@ const ResultatRechPage = () => {
   };
 
   const handleTitleClick = (title) => {
-    // Handle the click action here, e.g., navigate to a detailed view
+    navigate('/ArticlePage');
     console.log(`Title "${title}" clicked`);
   };
 
