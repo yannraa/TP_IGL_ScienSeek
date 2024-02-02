@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PDFUploader from './PDFUploader';
-import PDFViewer from './PDFViewer';
+import PDFUploader from './PDFUploader.js';
+import PDFViewer from './PDFViewer.js';
 import AjoutModerateurButton from './AjoutModerateurButton.js';
 import TabModera from './TabModera.js';
 import backgroundAdmin from '../Image/backgroundAdmin.png';
@@ -24,29 +24,29 @@ function PageAdmin() {
 
   return (
     
-    <div style={{ display: 'flex', backgroundSize: 'contain',backgroundRepeat: 'no-repeat',
-    minHeight: '100vh',backgroundImage: `url(${backgroundAdmin})` }}>
+    <div style={{ display: 'flex', backgroundSize: 'contain',backgroundRepeat:'repeat',
+    minHeight: '100vh',backgroundImage: `url(${backgroundAdmin})` ,}}>
         
 
         <div><Navvbar /></div>
-      <div style={{display: 'flex',flexDirection: 'row', margin:'20px', }}>
+      <div style={{width: '50%' ,display: 'flex',flexDirection: 'row', margin:'20px',padding:'100px' }}>
         
       
         <TabModera/>
 
       </div>
      
-      <div style={{ width: '50%' , display :'flex' ,flexDirection: 'column'}}>
-        <div style={{ width: '50%' , margin:'10px'}}>
+      <div style={{ width: '50%' , display :'flex' ,flexDirection: 'column',padding:'80px'}}>
+        <div style={{ width: '60%' , margin:'10px', marginTop:'100px'}}>
         <AjoutModerateurButton/>
         </div>
-        <div style={{margin:'10px' }}>
+        <div style={{width: '60%',margin:'10px' ,marginTop:'60px'}}>
       <PDFUploader onFileSelect={handleFileSelect} />
       {selectedFile && pdfLoaded && <PDFViewer file={selectedFile} />}
       {pdfLoaded && !confirmation && (
         <div>
           <p>Clicker sur "Confirmer" apres avoir consulter le PDF.</p>
-          <button style={{border: '2px solid #0E00AF ',borderRadius : '10px', padding : '0' , margin : '0'}} onClick={handleConfirmClick}>Confirm</button>
+          <button style={{border: '2px solid #0E00AF ',borderRadius : '10px', padding : '5px' , margin : '0',cursor: 'pointer'}} onClick={handleConfirmClick}>Confirm</button>
         </div>
       )}
       {confirmation && <p>PDF importé avec success ! </p>}
