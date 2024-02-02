@@ -4,7 +4,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from .database import Base
 
-
 class UserRole(enum.IntEnum):
     administrateur = 1
     utilisateur = 2
