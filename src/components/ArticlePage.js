@@ -57,7 +57,12 @@ const ArticlePage = () => {
     };
 
 
-
+    const scrollToSection = (sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
 
     const [isIconActive, setIsIconActive] = useState(false);
 
@@ -172,17 +177,18 @@ return(
 
 
 <div style={{ display: 'flex',flexDirection: 'column', }} >
-<p style={{ fontSize: '17px', marginTop: '-520px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Résumé</p>
-<p style={{ fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>References</p>
-<p style={{ fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Mots clés</p>
-<p style={{ fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Auteurs</p>
-<p style={{ fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Institutions</p>
+<p onClick={() => scrollToSection('resume')}  style={{ cursor: 'pointer', fontSize: '17px', marginTop: '-520px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Résumé</p>
+<p onClick={() => scrollToSection('references')}  style={{cursor: 'pointer', fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>References</p>
+<p onClick={() => scrollToSection('motcle')}  style={{ cursor: 'pointer',fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Mots clés</p>
+<p onClick={() => scrollToSection('auteurs')}  style={{cursor: 'pointer', fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Auteurs</p>
+<p onClick={() => scrollToSection('institutions')}  style={{ cursor: 'pointer',fontSize: '17px', marginTop: '1px' , marginBottom: '20px', marginLeft: '-35px', color:'#0E00AF' }}>Institutions</p>
 <div style={{ padding:'11px', marginLeft: '-60px',textAlign: 'center' }}>
-        <button style={{backgroundColor:'#FFFFFF', color:'#0E00AF', paddingTop:'8px', paddingBottom:'8px', paddingLeft:'10px' , paddingRight:'10px', border: '1.7px solid #0E00AF', borderRadius:'5px'}} onClick={handlePDFCreation} >Telecharger PDF</button>
-      </div>
-<div style={{ padding:'11px', marginLeft: '-60px',textAlign: 'center' }}>
-  <button style={{backgroundColor:'#FFFFFF', color:'#0E00AF', paddingTop:'8px', paddingBottom:'8px', paddingLeft:'10px' , paddingRight:'10px', border: '1.7px solid #0E00AF', borderRadius:'5px'}} onClick={handleButtonClick}>Ajouter aux favoris</button>
+  <button style={{cursor: 'pointer',backgroundColor:'#FFFFFF', color:'#0E00AF', paddingTop:'8px', paddingBottom:'8px', paddingLeft:'10px' , paddingRight:'10px', border: '1.7px solid #0E00AF', borderRadius:'5px'}} onClick={handleButtonClick}>Ajouter aux favoris</button>
 </div>
+<div style={{ padding:'11px', marginLeft: '-60px',textAlign: 'center' }}>
+        <button style={{cursor: 'pointer',backgroundColor:'#FFFFFF', color:'#0E00AF', paddingTop:'8px', paddingBottom:'8px', paddingLeft:'10px' , paddingRight:'10px', border: '1.7px solid #0E00AF', borderRadius:'5px'}} onClick={handlePDFCreation} >Telecharger PDF</button>
+      </div>
+
 
 </div>
 
@@ -201,16 +207,16 @@ return(
       <div style={{ display: 'grid', gridTemplateColumns: '117px 200px 200px 116px' }}>
       <h2 style={{ fontSize: '15px', marginBottom: '20px', marginLeft: '40px', paddingTop:'4px' }}>Publié le:</h2>
       <p style={{ fontSize: '16px'}}> {date} </p>
-      <img style={{paddingTop:'12px', marginLeft:'-85px', cursor:'pointer'}} src={isIconActive ? favorisiconact : favorisicon} alt={isIconActive ? 'Active Favoris Icon' : 'Favoris Icon'} onClick={handleClick}/>
-      <div style={{ padding:'11px', marginLeft: '-465px',textAlign: 'center' }}>
-        <button style={{backgroundColor:'#E1EBF6', color:'#0E00AF', paddingTop:'8px', paddingBottom:'8px', paddingLeft:'10px' , paddingRight:'10px', border: '1.7px solid #0E00AF', borderRadius:'5px'}}  onClick={handlePDFOpening} >Acceder au PDF</button>
+   
+      <div style={{ padding:'11px', marginLeft: '50px',textAlign: 'center' }}>
+        <button style={{cursor: 'pointer', backgroundColor:'#E1EBF6', color:'#0E00AF', paddingTop:'8px', paddingBottom:'8px', paddingLeft:'10px' , paddingRight:'10px', border: '1.7px solid #0E00AF', borderRadius:'5px'}}  onClick={handlePDFOpening} >Acceder au PDF</button>
       </div>
 
       </div>
 
       <div style={{ borderBottom: '1px solid #ccc' }}></div> 
 
-          <h2 style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Résumé</h2>
+          <h2 id="resume" style={{  fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Résumé</h2>
           <p style={{ fontSize: '16px', marginBottom: '20px' , marginLeft: '54px', marginRight:'85px'}}>
             {resume}
           </p>
@@ -222,16 +228,16 @@ return(
             {article}
           </p>
           <div style={{ borderBottom: '1px solid #ccc' }}></div> 
-          <h2 style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Réferences</h2>
+          <h2 id="references" style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Réferences</h2>
           <p style={{ fontSize: '15px', marginLeft: '45px', color: '#0E00AF', marginTop:'-10px'  }}>{displayReferences}</p>
           <div style={{ borderBottom: '1px solid #ccc' }}></div> 
-          <h2 style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Mots clés</h2>
+          <h2 id="motcle" style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Mots clés</h2>
           <p style={{ fontSize: '15px', marginLeft: '45px', color: '#0E00AF', marginTop:'-10px'  }}>{displayMots}</p>
           <div style={{ borderBottom: '1px solid #ccc' }}></div> 
-          <h2 style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Auteurs</h2>
+          <h2 id="auteurs" style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}>Auteurs</h2>
           <p style={{ fontSize: '15px', marginLeft: '45px', color: '#0E00AF', marginTop:'-10px'  }}>{displayAuteursLinks}</p>
           <div style={{ borderBottom: '1px solid #ccc' }}></div> 
-          <h2 style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}> Institutions</h2>
+          <h2 id="institutions" style={{ fontSize: '20px', marginBottom: '20px', marginLeft: '40px' }}> Institutions</h2>
           <p style={{ fontSize: '15px', marginLeft: '45px', color: '#0E00AF', marginTop:'-10px'  }}>{displayInstitutionsLinks}</p>
 
         </div>

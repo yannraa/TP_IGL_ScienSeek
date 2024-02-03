@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PDFUploader from './PDFUploader.js';
-import PDFViewer from './PDFViewer.js';
+import PDFUploader from './PDFUploader';
+import PDFViewer from './PDFViewer';
 import AjoutModerateurButton from './AjoutModerateurButton.js';
 import TabModera from './TabModera.js';
 import backgroundAdmin from '../Image/backgroundAdmin.png';
@@ -46,7 +46,7 @@ function PageAdmin() {
       {pdfLoaded && !confirmation && (
         <div>
           <p>Clicker sur "Confirmer" apres avoir consulter le PDF.</p>
-          <button style={{border: '2px solid #0E00AF ',borderRadius : '10px', padding : '5px' , margin : '0',cursor: 'pointer'}} onClick={handleConfirmClick}>Confirm</button>
+          <button style={{border: '2px solid #0E00AF ',borderRadius : '10px', padding : '5px' , margin : '0',cursor: 'pointer'}} onClick={handleConfirmClick}>Confirmer</button>
         </div>
       )}
       {confirmation && <p>PDF importé avec success ! </p>}

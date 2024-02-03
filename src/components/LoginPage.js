@@ -4,16 +4,29 @@ import Login from '../Image/Login.PNG'
 import Logo from '../Image/Logo.PNG';
 import { Link } from 'react-router-dom'; 
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [buttonActive, setButtonActive] = useState(false);
   const handleLogin = () => {
-    // Logique de connexion
-    console.log('Username:', username);
-    console.log('Password:', password);
+    // Simulating a successful login for demonstration purposes
+    const isLoginSuccessful = true; // Replace this with your actual login logic
+  
+    if (isLoginSuccessful) {
+      // Logique de connexion réussie
+      console.log('Username:', username);
+      console.log('Password:', password);
+  
+      // Navigate to PageRechPage on successful login
+      navigate('/PageRechPage');
+    } else {
+      // Handle failed login
+      console.log('Login failed');
+    }
   };
 
   const handleTogglePassword = () => {
@@ -158,11 +171,10 @@ const LoginPage = () => {
             Se connecter
           </button>
         </div>
-      {/* </form> */}
+      
       </div>
-      {/* </div>
-      </div> */}
-      <a href="/create-account" style={{
+    
+      <a href="/CreateAccountPage" style={{
             
             padding: '40px', 
             borderRadius: '10px',

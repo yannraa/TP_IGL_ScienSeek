@@ -1,22 +1,37 @@
+
+
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import PageRechPage from './components/PageRechPage';
 import PageAdmin from './components/PageAdmin';
+import PageRechPage from './components/PageRechPage';
 import ArticlePage from './components/ArticlePage';
-
+import ResultatRechPage from './components/ResultatRechPage';
+import FavorisPage from './components/FavorisPage';
+import { Link } from 'react-router-dom';
+import CreateModeraPage from './components/CreateModeraPage';
+import { BrowserRouter , Routes , Route } from 'react-router-dom'; 
 function App() {
   return (
-    <Router>
-      <div className="App">
+   <div>  
+   <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PageRechPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin" element={<PageAdmin />} />
-          <Route path="/articlePage" element={<ArticlePage />} />
+          <Route index element ={<LoginPage/>}/>
+          <Route path="/PageAdmin" element ={<PageAdmin/>}/>
+          <Route path="/LoginPage" element ={<LoginPage/>}/>
+          <Route path="/CreateAccountPage" element ={<CreateAccountPage/>}/>
+          <Route path="/PageRechPage" element ={<PageRechPage/>}/>
+          <Route path="/CreateModeraPage" element ={<CreateModeraPage/>}/>
+          <Route path="/ArticlePage" element ={<ArticlePage/>}/>
+          <Route path="/ResultatRechPage" element ={<ResultatRechPage/>}/>
+          <Route path="/FavorisPage" element ={<FavorisPage/>}/>
         </Routes>
-      </div>
-    </Router>
+    </BrowserRouter>
+
+   </div>
+   
+
   );
 }
 

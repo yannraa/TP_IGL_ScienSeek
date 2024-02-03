@@ -3,12 +3,14 @@ import pageRechBack from '../Image/pageRechBack.png';
 import Navvbar from './Navvbar';
 import Logo from '../Image/Logo.PNG';
 import rech from '../Image/rech.png';
+import { useNavigate } from 'react-router-dom';
+
 const PageRechPage = () => {
   const [searchValue, setSearchValue] = useState('');
-
+  const navigate = useNavigate();
   const handleSearch = () => {
     if (searchValue.trim() !== '') {
-      alert(`Searching for: ${searchValue}`);
+      navigate('/ResultatRechPage');
     } else {
       alert('Please enter a valid search term.');
     }
@@ -84,7 +86,7 @@ const PageRechPage = () => {
             Rechercher
           </button>
         </div>
-        {/* Other components, content, etc. */}
+       
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Login from '../Image/Login.PNG'
 import Logo from '../Image/Logo.PNG';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const CreateAccountPage = () => {
   const [userName, setUserName] = useState('');
@@ -12,6 +13,8 @@ const CreateAccountPage = () => {
   const [birthdate, setBirthdate] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleUserNameChange = (e) => {
     setUserName(e.target.value);
@@ -41,21 +44,43 @@ const CreateAccountPage = () => {
     setBirthdate(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (password !== confirmPassword) {
       setPasswordError('Les mots de passe ne correspondent pas');
       return;
     }
-
+  
     // Clear the password error if passwords match
     setPasswordError('');
-
-    // TODO: Implement form submission logic here
-    console.log('Form submitted');
-    
+  
+    try {
+      // TODO: Implement your actual form submission logic here (e.g., API call)
+      // Replace the following line with your actual logic
+      const registrationSuccessful = await submitRegistrationForm();
+  
+      if (registrationSuccessful) {
+        // Navigate to PageAdmin on successful form submission
+        navigate('/PageRechPage');
+      } else {
+        // Handle the case where registration failed
+        console.error('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error during form submission:', error);
+    }
   };
+
+  const submitRegistrationForm = async () => {
+    // Implement your form submission logic here (e.g., API call)
+    // Return true if registration is successful, false otherwise
+    // For example, you might use axios or fetch to make an API call
+    // and return a boolean based on the response from the server
+    return true; // Replace with actual logic
+  };
+
+
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -182,7 +207,7 @@ whiteSpace: 'nowrap' }} className="login-button">
 
       {/* </form> */}
       </div>
-      <a href="/CreateAccountPage" style={{
+      <a href="/LoginPage" style={{
 
             padding: '40px',
             borderRadius: '10px',
