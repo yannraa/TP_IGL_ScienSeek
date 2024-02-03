@@ -1,0 +1,65 @@
+{
+    "results": [
+      {
+        "_index": "articles_index",
+        "_id": "tQmhcI0BblRMAsyfnPKv",
+        "_score": null,
+        "_source": {
+          "title": "Tournoi des six nations",
+          "abstract": "l’Ecosse s’impose in extremis au Pays de Galles, l’Angleterre se sort du piège italien à Rome",
+          "authors": [
+            {
+              "name": "Patrick Kanner",
+              "affiliation": "Senateur de nord"
+            }
+          ],
+          "institutions": [
+            "sport"
+          ],
+          "keywords": [
+            "Chardon"
+          ],
+          "full_text": "Longtemps, il n’y a eu qu’une seule équipe sur le terrain. Samedi 3 février, l’Ecosse a, durant la première période, martyrisé à Cardiff un XV du Pays de Galles. Et puis, les Gallois ont sonné la révolte. Trop tard toutefois pour renverser le XV du Chardon lors de cette première journée du Tournoi des six nations. Dans ce match fou, les hommes de Warren Gatland, qui balbutient leur rugby depuis leur dernier titre dans le Tournoi des six nations, en 2019, échouent à un petit point seulement de leurs adversaires, dans ce qui aurait constitué un hold-up de grande classe. Les Ecossais remportent, eux, leur première victoire (26-27) depuis vingt-deux ans, en terre galloise. B",
+          "pdf_url": "https://www.lemonde.fr/sport/article/2024/02/03/tournoi-des-six-nations-l-angleterre-se-sort-du-piege-italien-et-debute-son-tournoi-par-une-victoire_6214618_3242.html",
+          "publication_date": "2024-02-03",
+          "references": [
+            "Le monde"
+          ]
+        },
+        "sort": [
+          1706918400000
+        ]
+      },
+      {
+        "_index": "articles_index",
+        "_id": "tAmbcI0BblRMAsyf9_K8",
+        "_score": null,
+        "_source": {
+          "title": "JO 2024",
+          "abstract": "En cette année olympique, le sport n’est toujours pas une priorité pour le gouvernement ",
+          "authors": [
+            {
+              "name": "Patrick Kanner",
+              "affiliation": "Senateur de nord"
+            }
+          ],
+          "institutions": [
+            "sport"
+          ],
+          "keywords": [
+            "Le, sénateur ,socialiste ,du ,Nord ,Patrick ,Kanner ,déplore"
+          ],
+          "full_text": "dans six mois, la France accueillera le plus grand événement sportif mondial : les Jeux olympiques et paralympiques. A l’été 2017, la désignation de Paris comme ville hôte a suscité un formidable élan d’espoir dans notre pays. Celui de faire enfin de la France une grande nation sportive, en préparant nos athlètes à l’épreuve suprême et en insufflant une envie de pratiquer une activité physique et sportive chez l’ensemble de nos concitoyens, des plus jeunes aux plus âgés.",
+          "pdf_url": "https://www.lemonde.fr/idees/article/2024/02/03/jo-2024-en-cette-annee-olympique-le-sport-n-est-toujours-pas-une-priorite-pour-le-gouvernement_6214590_3232.html",
+          "publication_date": "2024-02-03",
+          "references": [
+            "Le monde"
+          ]
+        },
+        "sort": [
+          1706918400000
+        ]
+      }
+      
+    ]
+  }
