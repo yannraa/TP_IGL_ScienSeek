@@ -30,19 +30,24 @@ app.include_router(search.router, prefix="/search", tags=["search"])
 
 # Create ElasticSearch index
 create_index()
-@app.get("/login")
-def login():
-    return FileResponse("/home/mehdi/Tpigl/TP_IGL_ScienSeek/srccomponents/LoginPage.js")
+@app.get("/")
+def LoginPage():
+    return FileResponse("/home/mehdi/Tpigl/TP_IGL_ScienSeek/src/components/LoginPage.js")
 
 @app.get("/recherche")
-def recherche():
-    return FileResponse("components/PageRechPage.js")
+def PageRechPage():
+    return FileResponse("/home/mehdi/Tpigl/TP_IGL_ScienSeek/src/components/PageRechPage.js")
 
 @app.get("/admin")
-def admin_page():
-    return FileResponse("components/PageAdmin.js")
+def PageAdmin():
+    return FileResponse("/home/mehdi/Tpigl/TP_IGL_ScienSeek/src/components/PageAdmin.js")
 
 
 @app.get("/articlePage")
-def article_page():
-    return FileResponse("components/ArticlePage.js")
+def ArticlePage():
+    return FileResponse("/home/mehdi/Tpigl/TP_IGL_ScienSeek/src/components/ArticlePage.js")
+
+
+@app.get("/FavorisPage")
+def FavorisPage():
+    return FileResponse("/home/mehdi/Tpigl/TP_IGL_ScienSeek/src/components/FavorisPage.js")
