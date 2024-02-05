@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 
 const PageRechPage = () => {
   const [searchValue, setSearchValue] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleSearch = () => {
     if (searchValue.trim() !== '') {
-      navigate('/ResultatRechPage');
+      // navigate('/ResultatRechPage');
     } else {
       alert('Please enter a valid search term.');
     }

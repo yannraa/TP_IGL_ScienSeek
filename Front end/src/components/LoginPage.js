@@ -41,8 +41,7 @@ const LoginPage = () => {
   };
 
   return (
-  
-    <div className="container" style={{ backgroundColor: '#E1EBF6' }} >
+      <div className="container" style={{ backgroundColor: '#E1EBF6' }} >
       
      <div className="left"> 
     

@@ -14,7 +14,7 @@ const CreateAccountPage = () => {
   const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleUserNameChange = (e) => {
     setUserName(e.target.value);
@@ -62,7 +62,7 @@ const CreateAccountPage = () => {
   
       if (registrationSuccessful) {
         // Navigate to PageAdmin on successful form submission
-        navigate('/PageRechPage');
+        // navigate('/PageRechPage');
       } else {
         // Handle the case where registration failed
         console.error('Registration failed');

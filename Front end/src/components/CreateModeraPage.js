@@ -14,7 +14,7 @@ const CreateModeraPage = () => {
   const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleUserNameChange = (e) => {
     setUserName(e.target.value);
@@ -61,7 +61,7 @@ const CreateModeraPage = () => {
   
       if (registrationSuccessful) {
         // Navigate to PageAdmin on successful form submission
-        navigate('/PageAdmin');
+        // navigate('/PageAdmin');
       } else {
         // Handle the case where registration failed
         console.error('Registration failed');
