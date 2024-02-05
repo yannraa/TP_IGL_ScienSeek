@@ -1,17 +1,15 @@
-
-
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useRef } from 'react';
 import LoginPage from './components/LoginPage';
 import PageRechPage from './components/PageRechPage';
 import PageAdmin from './components/PageAdmin';
-import PageRechPage from './components/PageRechPage';
 import ArticlePage from './components/ArticlePage';
 import ResultatRechPage from './components/ResultatRechPage';
 import FavorisPage from './components/FavorisPage';
 import { Link } from 'react-router-dom';
 import CreateModeraPage from './components/CreateModeraPage';
-import { BrowserRouter , Routes , Route } from 'react-router-dom'; 
+import CreateAccountPage from './components/CreateAccountPage';
 function App() {
   return (
    <div>  
