@@ -5,7 +5,7 @@ from app.routers import auth, users, administrateur, article, search
 
 app = FastAPI()
 
-origins = ["*"]
+origins = ["http://localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
