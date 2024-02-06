@@ -24,9 +24,6 @@ const CreateAccountPage = () => {
     setPassword(e.target.value);
   };
 
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -40,17 +37,12 @@ const CreateAccountPage = () => {
     setLastName(e.target.value);
   };
 
-  const handleBirthdateChange = (e) => {
-    setBirthdate(e.target.value);
-  };
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (password !== confirmPassword) {
-      setPasswordError('Les mots de passe ne correspondent pas');
-      return;
-    }
+    
   
     // Clear the password error if passwords match
     setPasswordError('');
@@ -110,100 +102,85 @@ const CreateAccountPage = () => {
 borderRadius: '50px' }}> */}
         <div
           style={{
-            backgroundColor: '#76B5FF',
+            backgroundColor: '#8BBFFF',
             padding: '30px',
-            borderRadius: '50px',
+            borderRadius: '15px',
             position: 'absolute',
-            top: '55%',
-            left: '70%',
+            top: '88%',
+            left: '77%',
             transform: 'translate(-50%, -50%)',
+            width:'25%', 
+
           }}
 
         >
       {/* <form style={{  flex: '1', padding: '0 20px' }}> */}
-        <div className="form-group">
-        <label htmlFor="username">Nom d’utilisateur</label>
-        <br />
-        <br />
-          <input type="text" id="username" value={userName}
-onChange={handleUserNameChange} className="input-field" />
-          <br /><br />
 
-        </div>
-        {/* --------------------------------------------------------------------------------------
-*/}
-
-        <div className="form-group">
-          <label htmlFor="password">Mot de passe</label>
-          <br />
-          <br/>
-          <div className="password-input">
-          <input  type={showPassword ? 'text' : 'password'}
-id="password" value={password} onChange={handlePasswordChange}
-className="input-field" />
-
-            <button
-              type="button"
-              onClick={handleTogglePassword}
-              className="password-toggle-button"
-            >
-              {showPassword ? '👁️' : '🔒'}
-            </button>
-
-          </div>
-
-        </div>
-        {/* --------------------------------------------------------------------------------------
-*/}
-        <div className="form-group">
-        <br/>
-
-        <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
-        <br /><br />
-
-        <div className="password-input">
-          <div>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-            className="input-field"
-
-          />
-          <button
-              type="button"
-              onClick={handleTogglePassword}
-              className="password-toggle-button"
-            >
-              {showPassword ? '👁️' : '🔒'}
-            </button>
-            </div>
-          {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
-
-
-          </div>
+      <div className="form-group">
+  <label htmlFor="email" style={{color: '#4E4E4E', fontSize:'20px', fontWeight:'600'}}>E-mail</label>
+  <br /><br />
+  <input type="email" id="email" value={email} onChange={handleEmailChange} className="input-field"  style={{borderRadius:'5px', width:'95%', height:'30px', backgroundColor: '#E1EBF6', border:'Background'}}/>
+  <br /><br />
 </div>
+
+<div className="form-group">
+  <label htmlFor="first-name" style={{color: '#4E4E4E', fontSize:'20px', fontWeight:'600'}}>Prénom</label>
+  <br /><br />
+  <input type="text" id="first-name" value={firstName} onChange={handleFirstNameChange} className="input-field" style={{borderRadius:'5px', width:'95%', height:'30px', backgroundColor: '#E1EBF6', border:'Background'}}/>
+  <br /><br />
+</div>
+
+<div className="form-group">
+  <label htmlFor="last-name" style={{color: '#4E4E4E', fontSize:'20px', fontWeight:'600'}}>Nom</label>
+  <br /><br />
+  <input type="text" id="last-name" value={lastName} onChange={handleLastNameChange} className="input-field" style={{borderRadius:'5px', width:'95%', height:'30px', backgroundColor: '#E1EBF6', border:'Background'}} />
+  <br /><br />
+</div>
+
+<div className="form-group">
+  <label htmlFor="username" style={{color: '#4E4E4E', fontSize:'20px', fontWeight:'600'}}>Nom d’utilisateur</label>
+  <br /><br />
+  <input type="text" id="username" value={userName} onChange={handleUserNameChange} className="input-field" style={{borderRadius:'5px', width:'95%', height:'30px', backgroundColor: '#E1EBF6', border:'Background'}} />
+  <br /><br />
+</div>
+
+<div className="form-group">
+  <label htmlFor="password" style={{color: '#4E4E4E', fontSize:'20px', fontWeight:'600'}}>Mot de passe</label>
+  <br /><br />
+  <div className="password-input">
+    <input type={showPassword ? 'text' : 'password'} id="password" value={password} onChange={handlePasswordChange} className="input-field" style={{borderRadius:'5px', width:'95%', height:'30px', backgroundColor: '#E1EBF6', border:'Background'}}/>
+    <button type="button" onClick={handleTogglePassword} className="password-toggle-button" style={{backgroundColor:'#E1EBF6', border:'Background', borderRadius:'5px', marginTop:'5px', marginBottom:'15px'}}>
+      {showPassword ? '👁️' : '🔒'}
+    </button>
+  </div>
+</div>
+
+        {/* --------------------------------------------------------------------------------------
+*/}
+
 {/* --------------------------------------------------------------------------------------
 */}
-<div className="form-group">
-<br />
-<label htmlFor="email">E-mail</label>
-<br /><br />
 
-          <input type="email" id="email" value={email}
-onChange={handleEmailChange}  className="input-field" />
 
-          <br /><br />
+<div className="submit-group">
+  <button
+    type="button"
+    onClick={handleSubmit}
+    style={{
+      whiteSpace: 'nowrap',
+      backgroundColor: '#E1EBF6', // Adding background color
+      color: '#000000', // Adding text color for better readability
+      padding: '10px 20px', // Adding padding for better appearance
+      border: 'none', // Removing default border
+      borderRadius: '5px', // Adding border radius for rounded corners
+      cursor: 'pointer', // Changing cursor to indicate interactivity
+   marginLeft:'26%'
+    }}
+    className="login-button"
+  >
+    Créer un compte
+  </button>
 </div>
-
-
-        <div className="submit-group">
-          <button type="button"  onClick={handleSubmit}  style={{
-whiteSpace: 'nowrap' }} className="login-button">
-          Creer un compte
-          </button>
-        </div>
 
       {/* </form> */}
       </div>
@@ -212,8 +189,8 @@ whiteSpace: 'nowrap' }} className="login-button">
             padding: '40px',
             borderRadius: '10px',
             position: 'absolute',
-            top: '90%',
-            left: '80%',
+            top: '155%',
+            left: '90%',
             transform: 'translate(-50%, -50%)',
             width: '650px'
           }}> <p>vous avez déja un compte? se connecter     </p></a>
