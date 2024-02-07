@@ -4,7 +4,7 @@ import PDFViewer from './PDFViewer';
 import AjoutModerateurButton from './AjoutModerateurButton.js';
 import TabModera from './TabModera.js';
 import backgroundAdmin from '../Image/backgroundAdmin.png';
-import Navvbar from './Navvbar.js';
+import Navvbar2 from './Navvbar2.js';
 
 function PageAdmin() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -28,7 +28,7 @@ function PageAdmin() {
     minHeight: '100vh',backgroundImage: `url(${backgroundAdmin})` ,}}>
         
 
-        <div><Navvbar /></div>
+        <div><Navvbar2 /></div>
       <div style={{width: '50%' ,display: 'flex',flexDirection: 'row', margin:'20px',padding:'100px' }}>
         
       
