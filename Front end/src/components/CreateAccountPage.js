@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext} from 'react';
 import Login from '../Image/Login.PNG';
 import Logo from '../Image/Logo.PNG';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from '../Context/UserContext';
 
 const CreateAccountPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [userName, setUserName] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [auth, setAuth] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,9 +27,9 @@ const CreateAccountPage = () => {
     setLastName(e.target.value);
   };
 
-  function handleUserNameChange(e) {
+  const handleUserNameChange = (e) => {
     setUserName(e.target.value);
-  }
+  };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -36,32 +37,36 @@ const CreateAccountPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
-      const response = await axios.post('http://localhost:8000/token', {
-        email: email,
-        first_name: firstName,
-        last_name: lastName,
-        username: userName,
-        password: password,
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('first_name', firstname);
+      formData.append('last_name', lastname);
+      formData.append('username', username);
+      formData.append('password', password);
+  
+      const response = await axios.post('http://localhost:8000/signup', formData, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
       });
-
-      const authToken = response.data.token;
-      setAuth(authToken);
-
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log('Registration successful:', responseData);
-        // You can handle navigation or other actions here
-      } else {
-        // Registration failed
-        console.error('Registration failed:', response.statusText);
-      }
+  
+      setErrorMessage(response.data.message);
+      const { token, role } = response.data;
+      localStorage.setItem('email', email);
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role);
+  
+      // Rediriger vers la page de recherche en utilisant navigate
+      navigate('/PageRechPage'); // Remplacez '/' par l'URL de la page d'accueil si nécessaire
     } catch (error) {
-      console.error('Error during form submission:', error);
+      console.error(error);
+      setErrorMessage('Error registering. Please try again.');
     }
   };
-
+  
+  
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -130,7 +135,7 @@ const CreateAccountPage = () => {
             <input
               type="text"
               id="firstname"
-              value={firstName}
+              value={firstname}
               onChange={handleFirstNameChange}
               className="input-field"
             />
@@ -145,7 +150,7 @@ const CreateAccountPage = () => {
             <input
               type="text"
               id="lastname"
-              value={lastName}
+              value={lastname}
               onChange={handleLastNameChange}
               className="input-field"
             />
@@ -160,7 +165,7 @@ const CreateAccountPage = () => {
             <input
               type="text"
               id="username"
-              value={userName}
+              value={username}
               onChange={handleUserNameChange}
               className="input-field"
             />

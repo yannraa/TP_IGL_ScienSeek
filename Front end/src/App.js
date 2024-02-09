@@ -9,6 +9,7 @@ import FavorisPage from './components/FavorisPage';
 import { Link } from 'react-router-dom';
 import CreateModeraPage from './components/CreateModeraPage';
 import CreateAccountPage from './components/CreateAccountPage';
+import ModeraPage from './components/ModeraPage';
 function App() {
   return (
    <div>  
@@ -21,6 +22,7 @@ function App() {
           {<Route path="/PageRechPage" element ={<PageRechPage/>}/> }
           { <Route path="/CreateModeraPage" element ={<CreateModeraPage/>}/> }
           { <Route path="/ArticlePage" element ={<ArticlePage/>}/> }
+          {  <Route path="/ModeraPage" element = {<ModeraPage/>}/>}
           { <Route path="/ResultatRechPage" element ={<ResultatRechPage/>}/> }
           <Route path="/FavorisPage" element ={<FavorisPage/>}/>
         </Routes>

@@ -93,6 +93,7 @@ const Navvbar = () => {
     boxShadow: '0px 2px 2px rgba(14, 0, 175, 0.7)',
     marginRight: '20px',
     cursor: 'pointer',
+    whiteSpace: 'nowrap'
   }}
   onClick={handleSeDeconnecter}
 >

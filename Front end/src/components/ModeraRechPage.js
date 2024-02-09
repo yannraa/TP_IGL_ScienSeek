@@ -1,13 +1,12 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import pageRechBack from '../Image/pageRechBack.png';
-import Navvbar from './Navvbar';
+import Navvbar2 from './Navvbar2';
 import Logo from '../Image/Logo.PNG';
 import rech from '../Image/rech.png';
 import { useNavigate } from 'react-router-dom';
 
-const PageRechPage = () => {
+const ModeraRechPage = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const handleSearch = () => {
     if (searchValue.trim() !== '') {
@@ -16,22 +15,10 @@ const PageRechPage = () => {
       alert('Please enter a valid search term.');
     }
   };
-  useEffect(() => {
-    // Fetch user data from the API endpoint
-    fetch('http://localhost:8000/token', {
-    headers: {
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-    })
-    .then(response => response.json())
-    .then(data => setUserData(data))
-    .catch(error => console.error(error));
-    }, []);
-    const  email = localStorage.getItem('email');
   return (
     <div >
       
-      <Navvbar />
+      <Navvbar2 />
       <div
         style={{
           backgroundColor: '#E2EBF6',
@@ -105,4 +92,4 @@ const PageRechPage = () => {
   );
 };
 
-export default PageRechPage;
+export default ModeraRechPage;
