@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ConfirmationDialog from './ConfirmationDialog';
+import ConfirmationDialog from './ConfirmationDialog.js';
 
 const TabModera = () => {
   const [data, setData] = useState([

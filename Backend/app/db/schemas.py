@@ -38,7 +38,7 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: str = None
-    permissions: List[str]
+    permissions: List[int]
 
 class AuthorBase(BaseModel):
     name: str

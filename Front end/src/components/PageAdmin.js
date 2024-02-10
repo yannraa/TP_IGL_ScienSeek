@@ -32,7 +32,9 @@ function PageAdmin() {
       <div style={{width: '50%' ,display: 'flex',flexDirection: 'row', margin:'20px',padding:'100px' }}>
         
       
-        <TabModera/>
+      
+     <TabModera  />
+
 
       </div>
      

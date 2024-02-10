@@ -29,6 +29,7 @@ const LoginPage = () => {
   
       setMessage(response.data.message);
       localStorage.setItem('email', email);
+      console.log(token);
       localStorage.setItem('token', token);
       localStorage.setItem('role', role)
       setButtonActive(true);

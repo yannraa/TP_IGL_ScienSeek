@@ -68,10 +68,9 @@ async def get_moderators(
     # This is necessary for react-admin to work
     response.headers["Content-Range"] = f"0-9/{len(moderators)}"
     return moderators
-
-@rau.put("/users/edit_moderator/{moderator_id}", response_model=schemas.UserOut, response_model_exclude_none=True)
+@rau.put("/users/edit_moderator/{email}", response_model=schemas.UserOut, response_model_exclude_none=True)
 async def edit_moderator(
-    moderator_id: int,
+    email: str,
     user: schemas.UserEdit,
     db: Session = Depends(database.get_db),
     current_user: schemas.UserOut = Depends(get_current_active_admin),
@@ -82,19 +81,20 @@ async def edit_moderator(
     if current_user.role != 1:  # Check if the current user is an admin
         raise HTTPException(status_code=403, detail="Only admin can edit moderators")
 
-    db_user = users.get_user(db, moderator_id)
-    if not db_user or db_user.role != 3:
+    moderator = get_user_by_email(db, email)
+    if not moderator or moderator.role != 3:
         raise HTTPException(status_code=404, detail="Moderator not found")
 
     # Update all fields from the user input
     for key, value in user.dict(exclude_unset=True).items():
-        setattr(db_user, key, value)
+        setattr(moderator, key, value)
 
     # If a new password is provided, update the hashed password
     if user.password:
-        db_user.hashed_password = get_password_hash(user.password)
+        moderator.hashed_password = get_password_hash(user.password)
 
     db.commit()
-    db.refresh(db_user)
-    return db_user
+    db.refresh(moderator)
+    return moderator
+
  

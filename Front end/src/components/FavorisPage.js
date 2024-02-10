@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const FavorisPage = () => {
 
-    // const navigate = useNavigate();
+     const navigate = useNavigate();
     
   const articles = [
     {
@@ -36,7 +36,7 @@ const FavorisPage = () => {
 
  
   const handleTitleClick = (title) => {
-    // navigate('/ArticlePage');
+     navigate('/ArticlePage');
     console.log(`Title "${title}" clicked`);
   };
 

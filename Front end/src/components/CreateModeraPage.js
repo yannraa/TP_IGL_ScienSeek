@@ -14,7 +14,9 @@ const CreateModeraPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState(''); // Ajouter cette ligne
   const [showPassword, setShowPassword] = useState(false);
-  const [passwordError, setPasswordError] = useState(""); 
+  const [passwordError, setPasswordError] = useState("");
+  const [data, setData] = useState([]); // initialisez avec un tableau vide
+ 
    
 
   const handleUserNameChange = (e) => {
@@ -24,11 +26,6 @@ const CreateModeraPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value); // Ajouter cette fonction
-  };
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -42,15 +39,7 @@ const CreateModeraPage = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-       
-    // Vérifie si les mots de passe correspondent
-    if (password !== confirmPassword) {
-      setPasswordError('Les mots de passe ne correspondent pas');
-      return;
-    }
 
-    // Efface l'erreur de mot de passe si les mots de passe correspondent
-    setPasswordError('');
 
     try {
       const formData = new FormData();
@@ -65,7 +54,7 @@ const CreateModeraPage = () => {
           'Content-Type': 'application/json' 
         }
       });
-    
+      setData(prevData => [...prevData, response.data]);
 
       // Si la requête est réussie, affichez un message de succès
       console.log('Modérateur créé avec succès:', response.data);

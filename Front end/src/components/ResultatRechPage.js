@@ -31,7 +31,7 @@ const ResultatRechPage = () => {
     // Add more articles as needed
   ];
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isMotCleDropdownVisible, setMotCleDropdownVisible] = useState(false);
   const [isAuteurDropdownVisible, setAuteurDropdownVisible] = useState(false);
   const [isInstitutionDropdownVisible, setInstitutionDropdownVisible] = useState(false);
